@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.lorenzofonseca.filmify.ui.movie_detail.MovieDetailViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shMoviePlaceHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shimmer_duration="1500">
+
+                <include layout="@layout/placeholder_movie"></include>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMoviePoster"
+                android:layout_width="300dp"
+                android:layout_height="400dp"
+                android:layout_marginVertical="@dimen/large_vertical_margin"
+                android:elevation="@dimen/xxsmall_size"
+                app:cardCornerRadius="@dimen/xsmall_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMoviePoster"
+                    android:layout_width="300dp"
+                    android:layout_height="400dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/regular_vertical_margin"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.title}"
+                android:textColor="@color/gray_600"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cvMoviePoster" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieOverview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/regular_horizontal_margin"
+                android:layout_marginVertical="@dimen/regular_vertical_margin"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.overview}"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieVoteAverage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/regular_horizontal_margin"
+                android:layout_marginVertical="@dimen/regular_vertical_margin"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.voteAverage}"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieOverview" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieReleaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/regular_horizontal_margin"
+                android:layout_marginVertical="@dimen/regular_vertical_margin"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.releaseDate}"
+                android:textColor="@color/gray_600"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieVoteAverage" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
